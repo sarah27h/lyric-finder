@@ -3,15 +3,17 @@ import Header from './Header';
 import Search from '../tracks/Search';
 import Tracks from '../tracks/Tracks';
 import Footer from './Footer';
+import TrackContextProvider from '../../contexts/TrackContext';
 
 const Main = () => {
   return (
     <div>
-      TrackDetails
-      <Header />
-      <Search />
-      <Tracks />
-      <Footer />
+      <TrackContextProvider>
+        <Header />
+        <Search />
+        <Tracks />
+        <Footer />
+      </TrackContextProvider>
     </div>
   );
 };
