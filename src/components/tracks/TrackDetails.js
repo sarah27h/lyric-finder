@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 const TrackDetails = ({ location: { state }, match }) => {
   const API_KEY = process.env.REACT_APP_MUSICXMATCH_KEY;
@@ -51,7 +52,7 @@ const TrackDetails = ({ location: { state }, match }) => {
               </p>
               <p>
                 <span>Update Time: </span>
-                {state.track.updated_time}
+                <Moment format="DD/MM/YYYY">{state.track.updated_time}</Moment>
               </p>
             </div>
           </div>
