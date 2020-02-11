@@ -4,7 +4,6 @@ export const TrackContext = createContext();
 const TrackContextProvider = props => {
   // state for tracks
   const [tracks, setTracks] = useState([]);
-  const [selectedTrack, setSelectedTrack] = useState([{}]);
 
   // note: after creating a environment variable you have to reset server to avoid getting 401 auth error
   const API_KEY = process.env.REACT_APP_MUSICXMATCH_KEY;
@@ -34,9 +33,7 @@ const TrackContextProvider = props => {
   const [heading, setHeading] = useState(['Top 10 Tracks']);
 
   return (
-    <TrackContext.Provider value={{ tracks, heading, selectedTrack, setSelectedTrack }}>
-      {props.children}
-    </TrackContext.Provider>
+    <TrackContext.Provider value={{ tracks, heading }}>{props.children}</TrackContext.Provider>
   );
 };
 
