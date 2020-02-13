@@ -33,7 +33,9 @@ const TrackContextProvider = props => {
   const [heading, setHeading] = useState(['Top 10 Tracks']);
 
   return (
-    <TrackContext.Provider value={{ tracks, heading }}>{props.children}</TrackContext.Provider>
+    <TrackContext.Provider value={{ tracks, setTracks, heading, setHeading }}>
+      {props.children}
+    </TrackContext.Provider>
   );
 };
 
