@@ -15,15 +15,18 @@ const Search = () => {
   // to send fetch request when songTitle change
   // which depend on uer input
   useEffect(() => {
-    fetch(
-      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${songTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${API_KEY}`
-    )
-      .then(response => response.json())
-      .then(data => {
-        setHeading('Search Results');
-        setTracks(data.message.body.track_list);
-      })
-      .catch(err => console.log(err));
+    // to prevent it from sending a fetch request when the app first launched
+    if (songTitle) {
+      fetch(
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${songTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${API_KEY}`
+      )
+        .then(response => response.json())
+        .then(data => {
+          setHeading('Search Results');
+          setTracks(data.message.body.track_list);
+        })
+        .catch(err => console.log(err));
+    }
   }, [songTitle]);
 
   const handleChange = e => {
