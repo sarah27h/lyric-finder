@@ -36,7 +36,9 @@ const TrackDetails = ({ location: { state }, match }) => {
             <div>
               <p>
                 <span>Song Genre: </span>
-                {state.track.primary_genres.music_genre_list[0].music_genre.music_genre_name}
+                {state.track.primary_genres.music_genre_list.length === 0
+                  ? '---'
+                  : state.track.primary_genres.music_genre_list[0].music_genre.music_genre_name}
               </p>
               <p>
                 <span>Explicit Words: </span>
