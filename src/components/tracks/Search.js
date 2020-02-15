@@ -6,7 +6,7 @@ const Search = () => {
   // to avoid send request for every keydown
   // update songTitle with the userInput after user click submit
   // then send fetch request
-  const [userInput, setUserInput] = useState([]);
+  const [userInput, setUserInput] = useState('');
   const [songTitle, setSongTitle] = useState('');
   const { setTracks, setHeading } = useContext(TrackContext);
   const API_KEY = process.env.REACT_APP_MUSICXMATCH_KEY;
@@ -32,7 +32,7 @@ const Search = () => {
   const handleChange = e => {
     setUserInput(e.target.value);
   };
-  const handleSubmit = e => {
+  const findTracks = e => {
     e.preventDefault();
     setSongTitle(userInput);
     setUserInput('');
@@ -41,7 +41,7 @@ const Search = () => {
     <Fragment>
       <h3>Search for A Song</h3>
       <p>Get the lyrics for any track</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={findTracks}>
         <input
           type="text"
           name="songTitle"
