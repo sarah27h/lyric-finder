@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 export const TrackContext = createContext();
 
-const TrackContextProvider = props => {
+const TrackContextProvider = (props) => {
   // state for tracks
   const [tracks, setTracks] = useState([]);
 
@@ -22,9 +22,9 @@ const TrackContextProvider = props => {
     fetch(
       `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=fr&f_has_lyrics=1&apikey=${API_KEY}`
     )
-      .then(response => response.json())
-      .then(data => setTracks(data.message.body.track_list))
-      .catch(err => console.log(err));
+      .then((response) => response.json())
+      .then((data) => setTracks(data.message.body.track_list))
+      .catch((err) => console.log(err));
     // to disable the warning rule of missing dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
